@@ -1,0 +1,48 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.2.02
+Date: 2024-06-06
+  Major Features:
+    - Ready for release.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.01
+Date: 2024-06-05
+  Major Features:
+    - Separated into icon-badges-groups (a library) and icon-badges-groups-modpack (data and library calls).
+---------------------------------------------------------------------------------------------------
+Version: 0.1.04
+Date: 2024-02-13
+  Major Features:
+    - First Beta Release.
+    - Barelling done.
+  Minor Features:
+    - much proof-reading done
+    - back to csv method, one line per item per badgegroup
+---------------------------------------------------------------------------------------------------
+Version: 0.1.03
+Date: 2024-02-11
+  Major Features:
+    - Works with IB's new function Build_badges, instead of adding properties to  prototypes.
+    - Uses pcall() to log error message when Build_badges fails, and keep running.
+    - Change the format of bigtable multiple times. Last one was one line per badgegroup per prototype.
+    - Oops, not releasing this one either. There's an even better way to manage the data.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.02
+Date: 2024-01-06
+  Major Features:
+    - It compiles, but the badges aren't as expected. Some items don't have badges at all, even though they have 1-3-letter badges. Some have only the first letter.
+    - Replaced bigtable with cvs-like file, complete with tips for editing in spreadsheet.
+    - Changed how settings work for the badge groups.
+  Plans:
+    - Fix the position. All should be right-top, because SB puts other information in all other corners.
+    - Fix the items that have badgegroup _broken. Hopefully it's just typos.
+    - Do the recipes that don't take icons from main_product. Leave this until after icons from all items and fluids are working.
+    - Activate two badge groups for science: color and Name.
+    - Make the settings startup and by player, if possible.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.01
+Date: 2024-01-30
+  Major Features:
+    - newmod
+    - icon-badges still objects to several SB items. I was able to fix some, but Galdoc will have to do the next one.
+  Plans:
+    - replace bigtable with cvs compatible, and tips for libreoffice

@@ -1,0 +1,15 @@
+{
+  "title"            : "Icon Badges Groups",
+  "name"             : "icon-badges-groups",
+  "author"           : "cricket",
+  "version"          : "0.2.02",
+  "factorio_version" : "1.1",
+  "contact"          : "cricket@onebit.ca , cricketb on Discord, CrBr on Reddit.",
+  "license"          : "",
+  "description"      : "A library, to be a bridge between Icon Badges and mods that have overhaul-specific data. Adds player settings.",
+  "dependencies"     : [
+						"base",
+						"icon-badges >= 1.1.07"
+						]
+}
+

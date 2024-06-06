@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"factorio.versions": [
+			{
+				"name": "factorio in mod install",
+				"factorioPath": "c:\\Users\\sandy\\Desktop\\modding\\bin\\x64\\factorio.exe",
+				"active": true
+			}
+		],
+		"Lua.workspace.library": [
+			"c:\\Users\\sandy\\Desktop\\modding\\data"
+		],
+		"Lua.workspace.userThirdParty": [
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\c825b3c231b3bbaa61849d9dd0291250\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\107c8acc606ccd4a5d4f1784607a5451\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\6ef5876130a8df20844aed30e3a505f9\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\836355bb11c09b67aa5dff2baf5e505d\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\d706bcee70b5fdf2f827660496a0c4b8\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\3875b1104d7ccda574b93473e35f15ed\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\e7dc982a42eb88d6f145efd1d034785d\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\3453a0a0e820554fbb65e21596bc2d6d\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\b8c1cbe4fbb4514b33131fa04c6609a3\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\d1f3dbc9108f5de41538819754b81c9f\\justarandomgeek.factoriomod-debug\\sumneko-3rd",
+			"c:\\Users\\sandy\\AppData\\Roaming\\Code\\User\\workspaceStorage\\f16054ebfabd04c08f304888c5380464\\justarandomgeek.factoriomod-debug\\sumneko-3rd"
+		],
+		"Lua.workspace.checkThirdParty": "ApplyInMemory"
+	}
+}
