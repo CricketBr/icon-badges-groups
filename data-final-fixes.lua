@@ -2,19 +2,29 @@
 -- iirc new method doesn't activate this file, so it shouldn't exist.
 -- It's the other file, group_badges, that has the fn that is called.
 
+
+
 if not cb then cb = {} end
 if not cb.ibg then cb.ibg = {} end
 
-
-local function log_it(m, v) -- print a message and the item?? to log file
-    log('icon-badges-groups : ' .. ' name = ' .. v.name .. ', type = ' .. v.type .. ', badge = ' .. v.badge .. ' : ' .. m)
+local function logit(m, v) -- print a message and the item?? to log file
+    local l_logging = true
+    if l_logging then
+        log('icon-badges-groups cbdebug : ' ..
+            ' name = ' ..
+            v.name .. ', type = ' .. v.type .. ', badge = ' .. v.badge .. ', group = ' .. v.badgegroup .. ' : ' .. m)
+    end
 end
 
-function cb.ibg.do_badges(settings_table, bigtable)
-    local ldebugflags = {}
-    ldebugflags.log_entry = false
-    ldebugflags.log_success = false
-    ldebugflags.log_fail = true
+function cb.ibg.do_badges(settings_table, bigtable, debugflags)
+    local l_debugflags = {}
+    if debugflags then
+        l_debugflages = debugflags
+    else
+        l_debugflags.log_success = true
+        l_debugflags.log_fail = true
+    end
+
 
     local badge_groups_to_do = {}
     for i, v in pairs(settings_table) do
@@ -22,62 +32,52 @@ function cb.ibg.do_badges(settings_table, bigtable)
     end
 
     for _, v in ipairs(bigtable) do
-        local l_typetest, l_rawtest
+        local l_typetest = false
+        local l_rawtest = false
+        local l_grouptest = false
 
-        if v.type == 'item'
-            or v.type == 'fluid'
-            or v.type == 'recipe'
-            or v.type == 'module'
-            or v.type == 'tool'
-            or v.type == 'ammo'
-            or v.type == 'capsule'
-        then
-            l_typetest = true
-            if data.raw[v.type][v.name] then
-                l_rawtest = true
-            else
-                l_rawtest = false
-                log_it('prototype not in data.raw', v)
+
+        if 1 == 1 then
+            l_typetest = true -- used to test to see if in list of allowed types
+            if badge_groups_to_do[v.badgegroup] then
+                l_grouptest = true
+                if data.raw[v.type][v.name] then
+                    l_rawtest = true
+                end
             end
-        else
-            l_typetest = false
-            log_it('not in allowed types', v)
         end
 
-        if badge_groups_to_do[v.badgegroup] and l_typetest and l_rawtest then
+        if not l_typetest then
+            logit('l_typetest fail : ', v)
+        end
+        -- if not l_grouptest then logit('l_grouptest fail : ', v) end
+        if l_grouptest and not l_rawtest then
+            logit('l_rawtest fail : ', v)
+        end
+
+
+        if l_rawtest then
             local ib_data = { ib_let_badge = v.badge, ib_let_corner = 'right-top' }
-            -- log_it('doing',v)
+
             if pcall(Build_badge, data.raw[v.type][v.name], ib_data) then
-                log_it('success', v)
+                -- if l_debugflags.log_success then logit('badge built', v) end
             else
-                log_it('fail in Build_badge', v)
+                if l_debugflags.log_fail then logit('fail in Build_badge', v) end
             end
 
-            if v.type == 'fluid' then -- do barrel
+            if v.type == 'fluid' then -- do barrelS
                 local bname = v.name .. '-barrel'
                 if data.raw.item[bname] then
                     if pcall(Build_badge, data.raw['item'][bname], ib_data) then
-                        if ldebugflags.log_success then log_it('success barrel', v) end
+                        -- if l_debugflags.log_success then logit('success barrel', v) end
                     else
-                        if ldebugflags.log_fail then log_it('fail barrel', v) end
+                        if l_debugflags.log_fail then logit('fail barrel', v) end
                     end
                 end
             end
-        else
-            log_it('fail 2', v)
         end
-        local a = 1
+        local b = 1
     end
 
     local b = 1
 end
-
--- local function do_badge(v)
---     if ldebugflags.log_entry then log_it('entering', v) end
---     local ib_data = { ib_let_badge = v.badge, ib_let_corner = 'right-top' }
---     if pcall(Build_badge, data.raw[v.type][v.name], ib_data) then
---         -- if ldebugflags.log_success then log_it('success', v) end
---     else
---         if ldebugflags.log_fail then log_it('fail', v) end
---     end
--- end

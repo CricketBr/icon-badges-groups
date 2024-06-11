@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.03
+Date: 2024-06-11
+  Major Features:
+    - Added types for Nullius.
+    - Added ability for import-table to accept numbers and convert to strings. Allowed optional quotation marks in header.
+    - Added convert badges that are 1-9 to strings.
+    - Added several if global doesn't exist, define it, to reduce irrelevant error messages.
+    - I am are aware of the 10k of Warnings about Prototypes in the log file when run in vscode with fmtk. This only happens when run in debug mode. It's on my list to fix, but suspect it's out of my control.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.02
 Date: 2024-06-06
   Major Features:

@@ -2,12 +2,10 @@
 -- by jodokus31
 -- slightly changed by Cricket
 
--- TO USE:
--- OLD
--- require('import-table') -- goes in the file that needs the table.
--- old version of this file fills cb.import_table.table with the table.
+-- rev 2024-06-08
+-- Can leave quote marks in header row.
+-- Can use numbers (including decimals) and blank in data; no need to put in quotes.
 
--- NEW
 -- function cb.ibg.import_table.csv_to_lua(the_file)
 
 -- format of the data file, from the spreadsheet, (remove --)
@@ -58,12 +56,14 @@ end
 local csvtools = {}
 
 local DELIM = ";"
-local CELLPATTERN = "([^" .. DELIM .. "]*)" .. DELIM
+local CELLPATTERNHEADER = "\"?([^" .. DELIM .. "\"]*)\"?" .. DELIM
+local CELLPATTERN       = "([^" .. DELIM .. "]*)" .. DELIM
 
 function csvtools.read_lines(lines_string)
 	local lines = {}
 	for line in string.gmatch(lines_string, "[^\r\n]+") do
 		lines[#lines + 1] = line
+		-- log('cbdebug - csv-to-lua '..lines_string) -- debug
 	end
 	return lines
 end
@@ -72,8 +72,11 @@ function csvtools.string_as_value(str)
 	-- if string is an unknown identifier return as string and dont call it
 	if str ~= "nil" and str ~= "true" and str ~= "false" and str:match("^[A-Za-z_][A-Za-z0-9_]*$") then
 		return str
+  -- numbers are should be returned as string
+  elseif str:match("^[0-9]*$") then
+    return str
 	else
-		return loadstring("return " .. str)()
+		return load("return " .. str)()
 	end
 end
 
@@ -82,7 +85,7 @@ function csvtools.get_linepattern(line)
 	local column_names = {}
 
 	-- f.e. group;subgroup;name;xm;recipes;specials;prerequisites;count;ingredients;time;;icon
-	for cell in string.gmatch(line, CELLPATTERN) do
+	for cell in string.gmatch(line, CELLPATTERNHEADER) do
 		logtools.log(5, "cell: ", cell)
 
 		linepattern = linepattern .. CELLPATTERN
@@ -132,6 +135,7 @@ function csvtools.read_data_from_csv_lines(lines)
 				data[#data + 1] = data_entry
 			end
 		end
+		-- log('cbdebug import table success line '..line) -- debug option
 	end
 
 	return data
