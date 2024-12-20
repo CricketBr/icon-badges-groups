@@ -1,4 +1,4 @@
-Icon Badges Groups is a library to make it easier to use [Icon Badges (by Galdoc)](https://mods.factorio.com/mod/icon-badges).
+Icon Badges Groups is a library to make it easier to use [Icon Badges (by Galdoc)](https://mods.factorio.com/mod/icon-badges) (for the game Factorio).
 
 Everything specific to a modpack is in a separate mod, such as [Icon Badges Groups Nullius](https://mods.factorio.com/mod/icon-badges-nullius) and [Icon Badges SeaBlock](https://mods.factorio.com/mod/icon-badges-seablock). These have the data, function calls to the library, and sometimes a bit of automation.
 
